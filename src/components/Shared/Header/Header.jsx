@@ -22,22 +22,22 @@ const Navbar = () => {
                         {/* Navbar Links for Desktop */}
                         <div className="hidden sm:block sm:ml-6">
                             <div className="flex space-x-4">
-                                <NavLink to="/" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                                <NavLink to="/" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                                     Home
                                 </NavLink>
-                                <NavLink to="/about" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                                <NavLink to="/about" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                                     About
                                 </NavLink>
-                                <NavLink to="/product" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                                <NavLink to="/product" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                                     Product
                                 </NavLink>
-                                <NavLink to="/contact" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                                <NavLink to="/contact" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                                     Contact
                                 </NavLink>
-                                <NavLink to="/auth/sign-in" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                                <NavLink to="/auth/sign-in" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                                     Sign-In
                                 </NavLink>
-                                <NavLink to="/auth/sign-up" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                                <NavLink to="/auth/sign-up" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                                     Sign-Up
                                 </NavLink>
                             </div>
@@ -57,22 +57,22 @@ const Navbar = () => {
                 {/* Mobile Menu - Hidden by default */}
                 <div className={`sm:hidden ${menuOpen ? 'block' : 'hidden'} bg-gray-500 p-4`}>
                     <div className="flex flex-col space-y-4 items-center">
-                        <NavLink to="/" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                        <NavLink to="/" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 text-center w-full py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white text-center w-full py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                             Home
                         </NavLink>
-                        <NavLink to="/about" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                        <NavLink to="/about" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 text-center w-full py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white text-center w-full py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                             About
                         </NavLink>
-                        <NavLink to="/product" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                        <NavLink to="/product" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 text-center w-full py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white text-center w-full py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                             Product
                         </NavLink>
-                        <NavLink to="/contact" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                        <NavLink to="/contact" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 text-center w-full py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white text-center w-full py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                             Contact
                         </NavLink>
-                        <NavLink to="/auth/sign-in" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                        <NavLink to="/auth/sign-in" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 text-center w-full py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white text-center w-full py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                             Sign-In
                         </NavLink>
-                        <NavLink to="/auth/sign-up" className={({ isActive, isPending }) => isActive ? 'bg-yellow-500 px-3 py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
+                        <NavLink to="/auth/sign-up" className={({ isActive, isPending }) => isActive ? 'bg-fuchsia-500 text-center w-full py-2 rounded-md font-medium text-lg' : isPending ? 'bg-green-300' : "text-white text-center w-full py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                             Sign-Up
                         </NavLink>
                     </div>
