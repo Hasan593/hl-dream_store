@@ -36,7 +36,7 @@ const Navbar = () => {
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="px-3 py-2 text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
                             />
-                            <button type="submit" className="ml-2 px-3 py-2 bg-amber-900 text-white rounded-md hover:bg-amber-950">
+                            <button type="submit" className="ml-2 px-3 py-2 bg-sky-900 text-white rounded-md hover:bg-sky-950">
                                 Search
                             </button>
                         </form>
@@ -105,7 +105,7 @@ const Navbar = () => {
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="w-full px-3 py-2 text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
                             />
-                            <button type="submit" className="w-full mt-2 px-3 py-2 bg-fuchsia-500 text-white rounded-md hover:bg-fuchsia-600">
+                            <button type="submit" className="w-full mt-2 px-3 py-2 bg-sky-900 text-white rounded-md hover:bg-sky-950">
                                 Search
                             </button>
                         </form>
