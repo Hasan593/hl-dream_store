@@ -5,9 +5,24 @@ const OfferModal = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     // Modal automatically opens when the page loads
-    useEffect(() => {
-        setIsOpen(true);
-    }, []);
+    // useEffect(() => {
+    //     setIsOpen(true);
+    // }, []);
+
+    // ৪ ঘন্টার আগে দেখাবে না ৪ ঘন্টা পর পেজ রিলোড দিলে তবেই দেখাবে। এর মাঝে যতবারই পেজে যাওয়া আসা করি দেখাবে না।
+    useEffect(() => {   
+        //  const modalInterval = 30 * 60 * 1000; // 30 minutes in milliseconds
+         const modalInterval = 24 * 60 * 60 * 1000; // ২৪ ঘণ্টা
+         const now = Date.now(); // Current timestamp
+         const lastShown = localStorage.getItem("lastModalShown");
+ 
+         if (!lastShown || now - parseInt(lastShown, 10) > modalInterval) {
+             // Show the modal if it's the first time or after 30 minutes
+             setIsOpen(true);
+             localStorage.setItem("lastModalShown", now.toString()); // Update last shown time
+         }
+     }, []);
+
 
     // Function to close the modal
     const closeModal = () => {

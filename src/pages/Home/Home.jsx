@@ -1,6 +1,6 @@
 import Baner from './Baner';
 import Ebook from "./Ebook";
-import OfferModal from './OfferModal';
+import OfferModal from '../../components/OfferModal';
 
 const Home = () => {
     return (
