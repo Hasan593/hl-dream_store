@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/HL-full-Logo.png';
+import { FiMenu } from "react-icons/fi";
+import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -66,17 +68,21 @@ const Navbar = () => {
 
                     {/* Mobile Menu Button */}
                     <div className="sm:hidden">
-                        <button onClick={toggleMenu} className="text-white focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
+                        <button onClick={toggleMenu} className="text-white focus:outline-none relative flex items-center justify-center h-10 w-10">
+                            {
+                                menuOpen ? (
+                                    <RxCross2 className="h-8 w-8" />
+                                ) : (
+                                    <FiMenu className="h-8 w-8" />
+                                )
+                            }
                         </button>
                     </div>
                 </div>
 
                 {/* Mobile Menu - Hidden by default */}
-                <div className={`sm:hidden ${menuOpen ? 'block' : 'hidden'} bg-gray-500 p-4`}>
-                    <div className="flex flex-col space-y-4 items-center">
+                <div className={`sm:hidden overflow-hidden transition-all duration-1000 ease-in-out ${menuOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
+                    <div className="flex flex-col space-y-4 items-center p-4 bg-gray-500">
                         <NavLink to="/" className={({ isActive }) => isActive ? 'bg-fuchsia-500 text-center w-full py-2 rounded-md font-medium text-lg' : "text-white text-center w-full py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                             Home
                         </NavLink>
