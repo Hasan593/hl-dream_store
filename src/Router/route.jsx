@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import MainLayout from "../Layout/MainLayout";
 import Home from "../pages/home/Home";
 import SignIn from "../pages/auth/Signin/SignIn";
@@ -8,6 +8,7 @@ import NotFound from "../pages/notfound/NotFound";
 import About from "../pages/about/About";
 import Products from "../pages/products/Products";
 import Contact from "../pages/Contact/Contact";
+import axios from "axios";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home />
+                element: <Navigate to="/books" replace />
+            },
+            {
+                path: '/:key', // ক্যাটাগরি URL দিয়ে রাউট করবেন
+                element: <Home /> // Home পেজে সেখানেই Tabs রেন্ডার হবে
             },
             {
                 path: 'about',
@@ -24,7 +29,19 @@ const router = createBrowserRouter([
             },
             {
                 path: 'product',
-                element: <Products />
+                element: <Products />,
+                loader: async () => {
+                    const response = await axios.get('https://sunnah-store-server-azure.vercel.app/products');
+                    return response.data;
+                },
+            },
+            {
+                path: 'products/:key',
+                element: <Products />,
+                loader: async ({params}) => {
+                    const response = await axios.get(`https://sunnah-store-server-azure.vercel.app/products/${params.key}`);
+                    return response.data;
+                }
             },
             {
                 path: 'contact',

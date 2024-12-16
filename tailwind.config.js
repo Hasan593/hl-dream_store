@@ -9,7 +9,19 @@ export default {
     flowbite.content()
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        'step': 'step 2s ease-in-out 3',  // 3 বার ধাপে ধাপে প্রগ্রেস হবে
+      },
+      keyframes: {
+        step: {
+          '0%': { width: '0%' },
+          '30%': { width: '30%' },
+          '60%': { width: '60%' },
+          '100%': { width: '100%' },
+        },
+      },
+    },
   },
   plugins: [
     flowbite.plugin()
