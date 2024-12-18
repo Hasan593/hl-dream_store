@@ -14,13 +14,14 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout />,
+        errorElement: <NotFound />,
         children: [
             {
                 path: '/',
-                element: <Navigate to="/books" replace />
+                element: <Navigate to="/books" replace />,
             },
             {
-                path: '/:key', // ক্যাটাগরি URL দিয়ে রাউট করবেন
+                path: ':key', // ক্যাটাগরি URL দিয়ে রাউট করবেন
                 element: <Home /> // Home পেজে সেখানেই Tabs রেন্ডার হবে
             },
             {

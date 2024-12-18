@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@smastrom/react-rating": "^1.5.0",
+    "@tanstack/react-query": "^5.62.8",
     "axios": "^1.7.9",
     "flowbite-react": "^0.10.2",
     "react": "18.3.1",
