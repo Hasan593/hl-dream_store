@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/HL-full-Logo.png';
 import { FiMenu } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
+import { FaHeart } from "react-icons/fa";
+import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +21,7 @@ const Navbar = () => {
     };
 
     return (
-        <header className="bg-gray-500 text-white shadow-md">
+        <header className="bg-gray-500 text-white shadow-md fixed z-50 w-full top-0">
             <nav className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                 <div className="relative flex items-center justify-between h-16">
                     <div className="flex-1 flex items-center justify-between sm:items-stretch sm:justify-between">
@@ -53,6 +55,13 @@ const Navbar = () => {
                             </NavLink>
                             <NavLink to="/contact" className={({ isActive }) => isActive ? 'bg-pink-700 px-3 py-2 rounded-md font-medium text-lg' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-pink-500 hover:text-white"}>
                                 Contact
+                            </NavLink>
+                            <NavLink to="/cart" className={({ isActive }) => isActive ? 'text-pink-700 px-4 rounded-md font-medium text-lg' : "text-white px-4 rounded-md text-lg font-medium hover:text-white"}>
+                                <FiShoppingCart className='h-[32px] w-[32px]' />
+                            </NavLink>
+                            <NavLink to="/wishList" className={({ isActive }) => isActive ? 'text-pink-700 px-4 rounded-md font-medium text-lg' : "text-white px-4 rounded-md text-lg font-medium hover:text-white flex"}>
+                                {/* <FaRegHeart className='text-pink-700 h-[40px] w-[40px]' /> */}
+                                <FaHeart className='h-[32px] w-[32px]' />
                             </NavLink>
                             <NavLink to="/auth/sign-in" className={({ isActive }) => isActive ? 'bg-pink-700 px-3 py-2 rounded-md font-medium text-lg' : "text-white px-3 py-2 rounded-md text-lg font-medium hover:bg-pink-500 hover:text-white"}>
                                 Sign-In
@@ -88,6 +97,13 @@ const Navbar = () => {
                         </NavLink>
                         <NavLink to="/contact" className={({ isActive }) => isActive ? 'bg-fuchsia-500 text-center w-full py-2 rounded-md font-medium text-lg' : "text-white text-center w-full py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                             Contact
+                        </NavLink>
+                        <NavLink to="/cart" className={({ isActive }) => isActive ? 'text-pink-700 px-4 rounded-md font-medium text-lg w-full' : "w-full text-white px-4 rounded-md text-lg font-medium hover:text-white"}>
+                            <FiShoppingCart className='h-[32px] w-[32px] mx-auto' />
+                        </NavLink>
+                        <NavLink to="/wishList" className={({ isActive }) => isActive ? 'text-pink-700 px-4 rounded-md font-medium text-lg w-full' : "w-full text-white px-4 rounded-md text-lg font-medium hover:text-white"}>
+                            {/* <FaRegHeart className='text-pink-700 h-[40px] w-[40px]' /> */}
+                            <FaHeart className='h-[32px] w-[32px] mx-auto' />
                         </NavLink>
                         <NavLink to="/auth/sign-in" className={({ isActive }) => isActive ? 'bg-fuchsia-500 text-center w-full py-2 rounded-md font-medium text-lg' : "text-white text-center w-full py-2 rounded-md text-lg font-medium hover:bg-gray-700 hover:text-white"}>
                             Sign-In

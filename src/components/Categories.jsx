@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
 import { NavLink, useParams, Navigate, Link } from "react-router-dom";
-import Loading from "./Loading"; // লোডিং কম্পোনেন্ট, লোডিং অবস্থায় দেখানোর জন্য
+import { useQuery } from "@tanstack/react-query";
+import Loading from "./Loading";
+import { axiosInstance } from "../api/axios_instance";
 import ProductCart from "../pages/Products/Product/ProductCart";
 
-// ক্যাটাগরি ডেটা (স্ট্যাটিক ডেটা, যা API থেকে পরিবর্তিত হতে পারে)
 const categoryData = [
   { catName: "Books", path: "/books" },
   { catName: "Electronics", path: "/electronics" },
@@ -14,51 +14,44 @@ const categoryData = [
 ];
 
 function Categories() {
-  // প্রোডাক্ট এবং লোডিং স্টেট সংরক্ষণ
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { key } = useParams();
 
-  // প্রোডাক্ট ডেটা ফেচ করা হচ্ছে
-  useEffect(() => {
-    setLoading(true);
-    fetch("https://sunnah-store-server-azure.vercel.app/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data.data); // API থেকে আসা প্রোডাক্ট ডেটা সেট করা হচ্ছে
-      })
-      .catch((err) => console.log(err)) // কোনো ইরর থাকলে লগ করা হচ্ছে
-      .finally(() => {
-        setLoading(false); // লোডিং শেষ হয়েছে
-      });
-  }, []);
+  const { data: products = [], isLoading, error } = useQuery({
+    queryKey: ["products", key],
+    queryFn: async () => {
+      const res = await axiosInstance.get(key ? `products/${key}` : "products");
+      return res.data.data;
+    },
+    staleTime: 5 * 60 * 1000,
+  });
 
-  const { key } = useParams(); // ডাইনামিক URL প্যারামিটার `key` রিসিভ করা হচ্ছে
-  const category = categoryData.find((cat) => cat.path === `/${key}`); // URL থেকে ক্যাটাগরি ম্যাপ করা হচ্ছে
+  if (error) {
+    return <p>Error loading products: {error.message}</p>;
+  }
 
-  // যদি কোনো ক্যাটাগরি নির্দিষ্ট না থাকে, `/books` এ রিডাইরেক্ট করবে
   if (!key) {
     return <Navigate to="/books" replace />;
   }
 
-  // যদি `key` অবৈধ হয়, একটি ইরর থ্রো করা হচ্ছে
+  const category = categoryData.find((cat) => cat.path === `/${key}`);
+
   if (!category) {
-    throw new Error("Invalid key");
+    throw new Error("Invalid category key");
   }
 
-  // প্রোডাক্ট ফিল্টার করা হচ্ছে, যেখানে ক্যাটাগরি মিলছে
-  const filteredProducts = products.filter(
-    (product) =>
-      product.category.toLowerCase() === category?.catName.toLowerCase()
-  );
-
-  // লোডিং স্টেট দেখানোর জন্য
-  if (loading) {
+  if (isLoading) {
     return <Loading />;
   }
 
+  const filteredProducts = Array.isArray(products)
+    ? products.filter(
+        (product) =>
+          product.category?.toLowerCase() === category.catName.toLowerCase()
+      )
+    : [];
+
   return (
     <div>
-      {/* ক্যাটাগরি ট্যাব */}
       <div className="border-b border-gray-300 mt-8">
         <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
           {categoryData.map((category) => (
@@ -79,27 +72,23 @@ function Categories() {
         </div>
       </div>
 
-      {/* ক্যাটাগরি কন্টেন্ট */}
       <div className="p-4">
         <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">
-          {category?.catName}
+          {category.catName}
         </h2>
-        {/* প্রোডাক্ট লিস্ট */}
+
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {filteredProducts.length > 0 ? (
-            filteredProducts
-              .slice(0, 5) // প্রথম পাঁচটি প্রোডাক্ট দেখানো হচ্ছে
-              .map((product) => (
-                <ProductCart key={product?._id} product={product} /> // প্রোডাক্ট কার্ড কম্পোনেন্ট
-              ))
+            filteredProducts.slice(0, 5).map((product) => (
+              <ProductCart key={product._id} product={product} />
+            ))
           ) : (
-            <p>No products available in this category.</p> // যদি প্রোডাক্ট না থাকে
+            <p>No products available in this category.</p>
           )}
         </div>
-        {/* প্রোডাক্টের "Load More" বাটন */}
-        {filteredProducts && (
+
+        {filteredProducts.length > 0 && (
           <Link to={`/products/${key}`}>
-            {" "}
             <button className="bg-primary mt-6">Load More</button>
           </Link>
         )}

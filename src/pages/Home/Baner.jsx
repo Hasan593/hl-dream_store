@@ -11,7 +11,7 @@ import watch from '../../assets/Carousel Images/Watch and bag.png'
 
 const Baner = () => {
     return (
-        <div className="h-[120px] md:h-[400px] xl:h-80 2xl:h-96">
+        <div className="h-[120px] md:h-[400px] xl:h-80 2xl:h-96 mt-16">
             <Carousel>
                 <img src={Cleaner} alt="..." />
                 <img src={coffe} alt="..." />
